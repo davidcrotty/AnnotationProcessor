@@ -6,7 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.SOURCE)
-@Target(ElementType.FIELD)
-public @interface ViewBinder {
-     int value();
+@Target(ElementType.TYPE)
+public @interface NewIntent {
 }
