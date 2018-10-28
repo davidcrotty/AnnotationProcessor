@@ -45,11 +45,6 @@ public class BindViewProcessor extends AbstractProcessor {
 
         HashMap<String, String> activitesWithPackage = new HashMap();
 
-
-        if(true) {
-            throw new RuntimeException("sssdd");
-        }
-
         //grab the classes we wish to inject into
         for(Element element : roundEnvironment.getElementsAnnotatedWith(NewIntent.class)) {
 
@@ -74,8 +69,8 @@ public class BindViewProcessor extends AbstractProcessor {
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL);
 
         //get our intent class
-        ClassName intent = ClassName.get("android.content.Intent", "Intent");
-        ClassName context = ClassName.get("android.content.Context", "Context");
+        ClassName intent = ClassName.get("android.content", "Intent");
+        ClassName context = ClassName.get("android.content", "Context");
 
         for (Map.Entry<String, String> element : activitesWithPackage.entrySet()) {
             //create our specification
