@@ -16,6 +16,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.processManifest.doLast {
+                output.processManifest.manifestOutputDirectory.eachFile { f ->
+                    if(f.name == "AndroidManifest.xml") {
+                        def newFileContents = f.getText('UTF-8').replace("bar", "bazz")
+                        f.write(newFileContents, 'UTF-8')
+                    }
+                }
+            }
+        }
+    }
+}
+
+task foo(dependsOn: 'installDebug') {
+
 }
 
 dependencies {
