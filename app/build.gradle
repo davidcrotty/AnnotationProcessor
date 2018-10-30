@@ -17,16 +17,8 @@ android {
         }
     }
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            output.processManifest.doLast {
-                output.processManifest.manifestOutputDirectory.eachFile { f ->
-                    if(f.name == "AndroidManifest.xml") {
-                        def newFileContents = f.getText('UTF-8').replace("bar", "bazz")
-                        f.write(newFileContents, 'UTF-8')
-                    }
-                }
-            }
-        }
+        //How to inject into manifest... https://github.com/bugsnag/bugsnag-android-gradle-plugin/blob/313610bb4096fd4d1facdbaec0d8a7ea9caf507e/src/main/groovy/com/bugsnag/android/gradle/BugsnagPlugin.groovy
+        variant.processResources.manifestFile
     }
 }
 
