@@ -1,0 +1,3 @@
+class Deps {
+    String stuff
+}
